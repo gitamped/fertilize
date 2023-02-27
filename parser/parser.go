@@ -1,5 +1,11 @@
 package parser
 
+/*
+	https://github.com/pacedotdev/oto.git
+	The MIT License (MIT)
+	Copyright (c) 2021 Pace Software Ltd
+*/
+
 import (
 	"fmt"
 	"go/ast"
@@ -151,6 +157,15 @@ type FieldType struct {
 	Multiple        bool   `json:"multiple"`
 	Package         string `json:"package"`
 	IsObject        bool   `json:"isObject"`
+}
+
+// New makes a fresh parser using the specified patterns.
+// The patterns should be the args passed into the tool (after any flags)
+// and will be passed to the underlying build system.
+func New(patterns ...string) *Parser {
+	return &Parser{
+		patterns: patterns,
+	}
 }
 
 func (p Parser) Parse() (map[string]*Definition, error) {
