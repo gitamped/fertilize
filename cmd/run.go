@@ -50,7 +50,7 @@ func Execute() {
 func init() {
 	rootCmd.PersistentFlags().StringVar(&outfile, "out", "", "output file (default: stdout)")
 	rootCmd.PersistentFlags().StringVar(&pkgs, "pkgs", "./...", "comma separated list of package patterns")
-	rootCmd.PersistentFlags().BoolVar(&v, "verbose", false, "verbose output")
+	rootCmd.PersistentFlags().BoolVar(&v, "verbose", false, "verbose output (default: false)")
 	rootCmd.PersistentFlags().StringVar(&ignoreList, "ignore", "", "comma separated list of interfaces to ignore")
 
 	viper.BindPFlag("out", rootCmd.PersistentFlags().Lookup("out"))
