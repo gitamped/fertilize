@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -20,7 +21,7 @@ func main() {
 	p.Verbose = false
 	def, err := p.Parse()
 	if err != nil {
-		panic("err parsing")
+		panic(fmt.Sprintf("err parsing: %s", err))
 	}
 	b, err := json.Marshal(def)
 	t, _ := ioutil.ReadFile("templates/handlers.tmpl")
