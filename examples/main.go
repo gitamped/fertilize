@@ -30,7 +30,7 @@ func main() {
 	tmpl, _ := template.New("test").Parse(string(t))
 
 	for k, v := range data {
-		p := strings.Replace(k, "github.com/gitamped/fertilize/", "", -1)
+		p := strings.Replace(k, "github.com/gitamped/fertilize/examples/", "", -1)
 		os.Truncate(filepath.Join(p, "handlers.go"), 0)
 		f, err := os.OpenFile(filepath.Join(p, "handlers.go"), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 		if err != nil {
