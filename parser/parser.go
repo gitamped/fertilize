@@ -296,9 +296,6 @@ func (p *Parser) parseField(pkg *packages.Package, objectName string, v *types.V
 
 	f.Comment = p.commentForField(objectName, f.Name)
 
-	if !v.Exported() {
-		return f, p.wrapErr(errors.New(f.Name+" must be exported"), pkg, v.Pos())
-	}
 	var err error
 	f.Type, err = p.parseFieldType(pkg, v)
 	if err != nil {

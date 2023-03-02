@@ -10,7 +10,15 @@
             "request": "launch",
             "mode": "auto",
             "program": "${workspaceFolder}/main.go",
-            "args": ["--pkgs", "github.com/gitamped/fertilize/testdata/services/pleasantries"]
+            "args": ["--pkgs", "github.com/gitamped/fertilize/examples/testdata/services/pleasantries"]
+        },
+        {
+            "name": "Launch Example Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/examples/main.go",
+            "args": ["--pkgs", "github.com/gitamped/fertilize/examples/testdata/services/pleasantries"]
         }
     ]
 }

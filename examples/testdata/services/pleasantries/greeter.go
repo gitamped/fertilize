@@ -1,7 +1,8 @@
 package pleasantries
 
 import (
-	"github.com/pacedotdev/oto/testdata/services"
+	"github.com/gitamped/fertilize/examples/testdata/services"
+	"github.com/gitamped/seed/server"
 )
 
 // GreeterService is a polite API.
@@ -10,10 +11,10 @@ import (
 type GreeterService interface {
 	// Greet creates a Greeting for one or more people.
 	// featured: true
-	Greet(GreetRequest) GreetResponse
+	Greet(GreetRequest, server.GenericRequest) GreetResponse
 	// GetGreetings gets a range of saved Greetings.
 	// featured: false
-	GetGreetings(GetGreetingsRequest) GetGreetingsResponse
+	GetGreetings(GetGreetingsRequest, server.GenericRequest) GetGreetingsResponse
 }
 
 // GreetRequest is the request object for GreeterService.Greet.
@@ -50,3 +51,18 @@ type Greeting struct {
 	// example: "Hello there"
 	Text string
 }
+
+type GreeterServicer struct{}
+
+func New() GreeterService {
+	return &GreeterServicer{}
+}
+
+func (GreeterServicer) Greet(r GreetRequest, gr server.GenericRequest) GreetResponse {
+	panic("not implemented")
+}
+
+func (GreeterServicer) GetGreetings(ggr GetGreetingsRequest, gr server.GenericRequest) GetGreetingsResponse {
+	panic("not implemented")
+}
+
