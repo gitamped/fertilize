@@ -88,6 +88,18 @@ func (p Parser) Parse() (map[string]*Definition, error) {
 				if err != nil {
 					return p.def, err
 				}
+				if isInSlice(p.ExcludeInterfaces, name) {
+					for _, method := range s.Methods {
+						for i := range method.InputObjects {
+							excludedObjectsTypeIDs = append(excludedObjectsTypeIDs, method.InputObjects[i].TypeID)
+						}
+						for i := range method.OutputObjects {
+							excludedObjectsTypeIDs = append(excludedObjectsTypeIDs, method.OutputObjects[i].TypeID)
+						}
+
+					}
+					continue
+				}
 				d.Services = append(d.Services, s)
 			case *types.Struct:
 				p.parseObject(pkg, obj, item)
